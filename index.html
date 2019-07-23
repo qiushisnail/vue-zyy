@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{test}}
+    <p z-text='test'>{{test}}</p>
+    <p z-html='html'>{{test}}</p>
+    <p>
+      <input type="text" z-model="test">
+    </p>
+    <p>
+      <button @click="onClick">按钮</button>
+    </p>
+  </div>
+  <script src='zvue.js'></script>
+  <script src='complie.js'></script>
+  <script>
+    const o = new ZVue({
+      el:'#app',
+      data: {
+        test: 'allala',
+        foo: {
+          bar: 'bar'
+        },
+        html: '<button>action</button>'
+      },
+      methods: {
+        onClick(){
+          alert("哈哈哈")
+        }
+      }
+    })
+    console.log(o.$data.test);
+    o.$data.test = 'hello, zvue!';
+    console.log(o.$data.test);
+
+    console.log(o.$data.foo.bar);
+    o.$data.foo.bar = 'hello, bar!';
+    console.log(o.$data.foo.bar);
+  </script>
+  </script>
+
+  <!-- <div id="app">
+    <p>你好，<span id="name"></span></p>
+  </div>
+  <script>
+    var obj = {};
+    Object.defineProperty(obj,'name',{
+      get: function(){
+        return document.getElementById('name').innerHTML;
+      },
+      set: function(inner){
+        document.getElementById('name').innerHTML = inner
+      }
+    })
+    obj.name = '乔峰';
+    console.log(obj.name);
+    
+  </script> -->
+</body>
+</html>
